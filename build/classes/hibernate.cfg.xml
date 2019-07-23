@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>		
+	<!--@1 : 需要根据实际情况修改： 添加的数据库的驱动，url，名和密码 -->	
+	 <property name="connection.dirver_class">com.mysql.jdbc.Driver</property>
+	<!--  <property name="connection."></property> -->
+	 <property name="connection.url">jdbc:mysql://localhost:3306/flrstore?useUnicode=true&amp;characterEncoding=UTF-8</property>
+
+	 <property name="connection.username">root</property>
+	 <property name="connection.password">123456</property>
+	 <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
+
+
+	<!--  连接池:max,minmax; 超时时长； 	--> 
+	<property name="hibernate.connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>
+        <property name="hibernate.c3p0.max_size">20</property>
+        <property name="hibernate.c3p0.min_size">1</property>
+        <property name="hibernate.c3p0.timeout">5000</property>
+        
+   
+        <property name="hibernate.c3p0.max_statements">100</property>
+        <property name="hibernate.c3p0.idle_test_period">3000</property>
+        <property name="hibernate.c3p0.acquire_increment">2</property>
+        
+        <property name="c3p0.testConnectionOnCheckout">true</property>
+        <property name="c3p0.idleConnectionTestPeriod">18000</property>
+        <property name="c3p0.maxIdleTime">25000</property>
+        <property name="c3p0.idle_test_period">120</property>
+	 <property name="automaticTestTable">Test</property>
+		<property name="hbm2ddl.auto">update</property>
+		<property name="show_sql">true</property>
+		<property name="format_sql">true</property> 
+
+		<!-- 5个表格，对应5个实体类,是似包名+类名 -->
+		<mapping resource="pojo/Admin.hbm.xml" />
+	    <mapping resource="pojo/Flowers.hbm.xml"/>
+	    <mapping resource="pojo/User.hbm.xml"/>
+	     <mapping resource="pojo/Note.hbm.xml"/>
+	</session-factory>
+</hibernate-configuration>

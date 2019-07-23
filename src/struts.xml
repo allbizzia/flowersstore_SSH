@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+   <constant name="struts.i18n.encoding" value="UTF-8"></constant>
+   <constant name="struts.objectFactory" value="spring"/>
+   
+    <package name="default" namespace="/" extends="struts-default">  
+   <!-- ***全局变量 ***
+    <global-results>
+        <result name="index">/index.jsp</result>
+    </global-results> 
+    
+***需要跳转的逻辑Action，这需要写，写了service后 再实现逻辑跳转 ***
+       <action name="见名知意" class="包名.类名，如action.IndexAction">
+             <result name="success">/index2.jsp</result>
+             <result name="error">/error.jsp</result>
+        </action>  -->   
+        <!--  登录-->
+       <action name="userLog" class="service.UserLogAction">
+             <result name="success">/userLogOk.jsp</result>
+             <result name="error">/UserRegister.jsp</result>
+        </action> 
+       <action name="adminLog" class="service.AdminLogAction">
+             <result name="success">/adminLogOk.jsp</result>
+             <result name="error">/adminLogError.jsp</result>
+        </action> 
+        <action name="register" class="service.UserRegAction">
+             <result name="success">/userRegOk.jsp</result>
+             <result name="error">/userRegError.jsp</result>
+        </action> 
+        
+      
+        <!-- 那二个action ：增删-->
+       <!-- 
+        <action name="adminDao" class="service.AdminDao">
+             <result name="success">/adminDao.jsp</result>
+             <result name="error">/adminDaoError.jsp</result>
+        </action>
+      -->
+       <action name="flrdao" class="service.FlrDaoAction" >
+             <result name="success">/adminDao.jsp</result>
+             <result name="error">/adminDaoError.jsp</result>
+        </action>
+       <!--删除、修改  -->
+       <action name="flrdel" class="service.FlrDelAction" >
+             <result name="success">/adminDao.jsp</result>
+             <result name="error">/adminDaoError.jsp</result>
+             </action>
+             
+             <action name="flrreq" class="service.FlrReqAction" >
+             <result name="success">/adminDao.jsp</result>
+             <result name="error">/adminDaoError.jsp</result>
+             </action>
+             
+             <action name="flradd" class="service.FlrAddAction" >
+             <result name="success">/adminDaoOk.jsp</result>
+             <result name="error">/adminDaoError.jsp</result>
+             </action>
+             
+        <action name="flrupd" class="service.FlrUpdAction" >
+             <result name="success">/adminDao.jsp</result>
+             <result name="error">/adminDaoError.jsp</result>
+             </action>
+             
+           <action name="userdel" class="service.UserDelAction" >
+             <result name="success">/adminUserDao.jsp</result>
+             <result name="error">/adminUserDaoError.jsp</result>
+             </action>
+          <action name="userupd" class="service.UserUpdAction" >
+             <result name="success">/userUpdOk.jsp</result>
+             <result name="error">/UserUpdError.jsp</result>
+             </action>
+             <action name="addflr" class="service.BuyFlrAction" > 
+             </action>
+              <action name="subflr" class="service.NoBuyFlrAction" >
+             </action>
+             
+  
+    </package>
+</struts>

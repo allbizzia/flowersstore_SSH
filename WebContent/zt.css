@@ -1,0 +1,24 @@
+@charset "utf-8";
+/* CSS Document */
+body{ ruby-align:center;}
+.box{ width:1200px; height:780px; margin:0 auto;}
+
+.head{ width:1200px; height:200px;}
+.banner{ width:1200px; height:150px; background:url(img/banner.jpg) }
+.nav{ width:1200px; height:50px; background:url(img/nav.PNG); text-align:right;}
+
+.body{width:1200px; height:500px; margin-bottom:50px;}
+.foot{width:1200px; height:100px; background:url(img/foot.PNG);}
+
+
+.left{ width:400px; height:430px; border:#CCC solid 1px; float:left; margin-left:20px; margin-top:50px; margin-bottom:50px; background:#FCF;}
+.top{ text-align:center; margin-top:30px; font:"良怀行书"; font-size:18px; height:250px;}
+.center{}
+label{ width:50px;}
+
+.right{width:735px; height:430px;  float:left; margin-left:20px;margin-top:50px;
+ }
+
+.foot2{ font-family:"良怀行书"; font-size:18px;}
+
+.center2{ height:430px; border:#CCC solid 1px;background:#FCF; }

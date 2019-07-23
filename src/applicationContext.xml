@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"    
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   
+        xmlns:p="http://www.springframework.org/schema/p"  
+        xmlns:aop="http://www.springframework.org/schema/aop"   
+        xmlns:context="http://www.springframework.org/schema/context"  
+        xmlns:jee="http://www.springframework.org/schema/jee"  
+        xmlns:tx="http://www.springframework.org/schema/tx"  
+        xsi:schemaLocation="    
+            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd  
+            http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd  
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
+            http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.2.xsd  
+            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
+
+
+   <!--  <bean name="productActionBean" class="com.how2java.action.ProductAction">
+    	<property name="productService" ref="productServiceImpl" />
+    </bean> -->
+    <!-- 所有的dao都继承了 连接session的类 -->
+    <bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="url"
+			value="jdbc:mysql://localhost:3306/flowers">
+		</property>
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value="123456"></property>
+	</bean>
+ 
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQL5Dialect
+				</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	 
+    
+   <!-- 1. 按着这个写  -->
+   <!--  <bean name="productActionBean" class="com.how2java.action.ProductAction">
+    	<property name="productService" ref="productServiceImpl" />
+    </bean> -->
+    <!-- util  -->
+     <bean name="util2" class="util.HibernateUtil"></bean>
+    <!-- 配置pojo -->
+     <bean name="user" class="pojo.User"></bean>
+     <bean name="admin" class="pojo.Admin"></bean>
+     <bean name="flowers" class="pojo.Flowers"></bean> 
+     <bean name="note" class="pojo.Note"></bean>
+     <!-- 配置dao -->  
+     <bean name="dao" class="dao.Dao2"></bean>
+     <bean name="update" class="dao.FUpdate"></bean>
+     
+     <!-- 配置action -->
+     <!-- 登录的相关action -->
+      <bean name="userLog" class="service.UserLogAction"></bean> 
+      <bean name="adminLog" class="service.AdminLogAction"></bean> 
+      <bean name="register" class="service.UserRegAction"></bean>
+      
+      
+      <!-- admin操作 -->
+     <bean name="flrdao" class="service.FlrDaoAction"></bean>
+     <bean name="userdao" class="service.UserDaoAction"></bean>
+     <!-- flr的删除 和修改  操作 -->
+     <bean name="flrdel" class="service.FlrDelAction"></bean>
+     <bean name="frlupd" class="service.FlrUpdAction"></bean>
+     <bean name="frlreq" class="service.FlrReqAction"></bean>
+     <bean name="frladd" class="service.FlrAddAction"></bean>
+       <bean name="userdel" class="service.UserDelAction"></bean>
+     
+     
+      <!-- user操作 -->
+       <bean name="userupd" class="service.UserUpdAction"></bean>
+       <bean name="addflr" class="service.BuyFlrAction"></bean>
+        <bean name="subflr" class="service.NoBuyFlrAction"></bean>
+      
+</beans>
